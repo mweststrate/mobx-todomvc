@@ -31,10 +31,15 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-1": "^6.3.13",
     "eslint-plugin-react": "^2.3.0",
+    "raw-loader": "^0.5.1",
+    "react-addons-perf": "^0.14.7",
+    "style-loader": "^0.13.1",
+    "todomvc-app-css": "^2.0.4",
     "webpack": "^1.9.6",
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
+    "classnames": "^2.2.3",
     "mobx": "^2.0.0",
     "mobx-react": "^3.0.0",
     "mobx-react-devtools": "^4.0.0",

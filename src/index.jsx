@@ -4,36 +4,45 @@ import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
-const appState =  new class AppState {
-    @observable timer = 0;
-    
-    constructor() {
-        setInterval(() => {
-            appState.timer += 1;
-        }, 1000);
-    }
-    
-    resetTimer() {
-        this.timer = 0;
-    }
-}();
+import { render } from 'react-dom'
+import AppState from './stores/appstate'
+import 'todomvc-app-css/index.css'
+import App from './components/App';
 
-@observer
-class TimerView extends Component {
-     render() {
-        return (
-            <div>
-                <button onClick={this.onReset}>
-                    Seconds passed: {this.props.appState.timer}
-                </button>
-                <DevTools />
-            </div>
-        );
-     }
+import * as Perf from 'react-addons-perf';
 
-     onReset = () => {
-     	this.props.appState.resetTimer();
-     }
-};
+// MWE: Generate todos for benchmarking
+const STORE_SIZE = 1000;
 
-ReactDOM.render(<TimerView appState={appState} />, document.getElementById('root'));
+const initialState = []
+
+for (var i = 0; i < STORE_SIZE; i++) {
+  initialState.push({
+    text: 'Item' + i,
+    completed: false,
+    id: i,
+    // reference to some other todo item, to similate
+    // having references to other objects in the state
+    other: i > 0
+      ? initialState[i - 1] 
+      : null
+  });
+}
+
+const store = new AppState(initialState);
+
+render(
+  <App store={store}/>,
+  document.getElementById('root')
+)
+
+// MWE: will only work on non prod builds
+window.perfStart = function() {
+  Perf.start();
+}
+
+window.perfStop = function() {
+  Perf.stop();
+  Perf.printInclusive();
+  Perf.printWasted();
+}
