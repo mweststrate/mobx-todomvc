@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Boilerplate for MobX + React project with JSX, ES6 compilation and hot code reloading",
   "scripts": {
+    "build": "NODE_ENV=production webpack --config webpack.config.production.js",
     "start": "node server.js",
     "lint": "eslint src"
   },
@@ -40,8 +41,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.3",
-    "mobx": "^2.0.0",
-    "mobx-react": "^3.0.0",
+    "mobx": "^2.1.1",
+    "mobx-react": "^3.0.3",
     "mobx-react-devtools": "^4.0.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"

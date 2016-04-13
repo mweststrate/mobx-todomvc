@@ -12,7 +12,7 @@ import App from './components/App';
 import * as Perf from 'react-addons-perf';
 
 // MWE: Generate todos for benchmarking
-const STORE_SIZE = 1000;
+const STORE_SIZE = 10000;
 
 const initialState = []
 

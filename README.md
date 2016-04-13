@@ -1,21 +1,21 @@
-mobx-react-boilerplate
-=====================
+# TodoMVC Benchmarking
 
-A minimal application that combines [MobX](https://mobxjs.github.io/mobx) with [React](https://facebook.github.io/react).
-Supports ES6 and JSX compilation through babel.
+Used for benchmarking and comparing performance with Redux (see also https://github.com/mweststrate/redux-todomvc).
+The main question: what are the performing impacts of a single change when the state size increases.
 
-* For a more sophisticated project to start with, see the full TodoMVC implementation: [mobx-react-todomvc](https://github.com/mobxjs/mobx-react-todomvc).
-* For simplicity sake Webpack Hot Module Reloading is disabled. If you want to use HMR, see the [Reactive2015 demo](https://github.com/mobxjs/mobx-reactive2015-demo) to see a valid setup.
+Surely nobody will render 10.000 todo items, but to know whether we can several thousand of components in visualizations with support drag and drop, this benchmark is a nice indication 
+whether rendering speed is roughly O(1) or O(n). 
 
-### Run the example
+See the discussion around: https://twitter.com/mweststrate/status/718444275239882753
 
-```
-npm install
-npm start
-open http://localhost:3000
-```
+## Running:
+* `npm install`
+* `npm start`
 
+## Profiling:
 
-### Credits
+* `npm install`
+* `npm run build`
+* Open index.html
 
-* [Mendix](http://github.com/mendix) for providing the opportunity to battle test this approach (we're hiring!).
+Profiling is done by using the chrome developers tool, profiles > collect CPU profile > record > change todo items > stop recording > Chart view > Take the average of the "Total Time" of the different stacks you see. Skip the first one as that one is usually slower (probably JIT initialization and such) 
