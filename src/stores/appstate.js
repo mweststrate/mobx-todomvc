@@ -35,7 +35,6 @@ export default class AppState {
       id: this.todos.length,
       text,
       completed: false,
-      other: null
     }
     this.todos.unshift(todo)
     return todo

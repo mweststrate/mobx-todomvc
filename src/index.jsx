@@ -21,11 +21,6 @@ for (var i = 0; i < STORE_SIZE; i++) {
     text: 'Item' + i,
     completed: false,
     id: i,
-    // reference to some other todo item, to similate
-    // having references to other objects in the state
-    other: i > 0
-      ? initialState[i - 1] 
-      : null
   });
 }
 
