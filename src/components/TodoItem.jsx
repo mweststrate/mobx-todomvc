@@ -28,7 +28,7 @@ class TodoItem extends Component {
     if (this.editing) {
       element = (
         <TodoTextInput text={todo.text}
-                       editing={this.state.editing}
+                       editing={this.editing}
                        onSave={(text) => this.handleSave(todo.id, text)} />
       )
     } else {
